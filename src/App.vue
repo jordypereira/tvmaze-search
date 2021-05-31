@@ -13,11 +13,16 @@
     <!-- Favorites -->
     <div class="mt-10 prose text-left">
       <h3>Favorites:</h3>
-      <ol v-if="favorites.length">
-        <li v-for="{name, id} in favorites" :key="id">
-          {{ name }}
+      <ul v-if="favorites.length">
+        <li v-for="item in favorites" :key="item.id" class="grid grid-cols-2 gap-2">
+          <div class="!mt-0">
+            {{ item.name }}
+          </div>
+          <button class="bg-red-400 hover:bg-red-600 text-white w-24 rounded" @click="toggleFavorite(item)">
+            Remove
+          </button>
         </li>
-      </ol>
+      </ul>
       <p v-else>
         Empty :c <br> Add some! :>
       </p>
