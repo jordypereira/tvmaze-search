@@ -12,7 +12,7 @@
 
     <!-- Favorites -->
     <div class="mt-10 prose text-left">
-      <h3>Favorites:</h3>
+      <h2>Favorites:</h2>
       <ul v-if="favorites.length">
         <li v-for="item in favorites" :key="item.id" class="grid grid-cols-2 gap-2">
           <div class="!mt-0">
