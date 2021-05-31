@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full max-w-md p-2 mx-auto bg-white rounded-2xl">
+  <div class="w-full max-w-md p-2 bg-white rounded-2xl">
     <Disclosure v-slot="{ open }">
       <DisclosureButton
         class="flex justify-between w-full px-4 py-2 text-sm font-medium text-left text-purple-900 bg-purple-100 rounded-lg hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75"
@@ -28,23 +28,22 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps } from "@vue/runtime-core";
-import type { PropType } from "@vue/runtime-core";
-  import {
-    Disclosure,
-    DisclosureButton,
-    DisclosurePanel,
-  } from '@headlessui/vue'
-import type { Show } from "../types";
-
+import { defineProps } from '@vue/runtime-core'
+import type { PropType } from '@vue/runtime-core'
+import {
+  Disclosure,
+  DisclosureButton,
+  DisclosurePanel,
+} from '@headlessui/vue'
+import type { Show } from '../types'
 
 defineProps({
   item: {
     type: Object as PropType<Show>,
-      required: true
+    required: true,
   },
   isFavorite: {
-    type: Boolean
-  }
+    type: Boolean,
+  },
 })
 </script>

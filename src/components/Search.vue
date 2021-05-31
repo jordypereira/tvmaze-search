@@ -2,14 +2,16 @@
   <label for="search" class="mr-4">Search Shows</label>
   <input
     id="search"
+    class="mx-auto"
     :value="searchString"
     type="search"
     name="search"
     autocomplete="off"
     @input="setSearchString"
   >
-  <template v-if="options && options.length > 0">
-    <RadioGroup class="max-w-250px mx-auto">
+  <small v-if="error" class="block text-red-400">{{ error.message }}</small>
+  <template v-else-if="options && options.length > 0">
+    <RadioGroup class="max-w-250px">
       <RadioGroupLabel class="sr-only">
         Server size
       </RadioGroupLabel>
@@ -20,9 +22,9 @@
           v-slot="{ active, checked }"
           as="template"
           :value="show"
-          @click="$emit('select-item', show)"
-          @keyup.enter="$emit('select-item', show)"
-          @keyup.space="$emit('select-item', show)"
+          @click="selectItem(show)"
+          @keyup.enter="selectItem(show)"
+          @keyup.space="selectItem(show)"
         >
           <div
             :class="[
@@ -67,15 +69,18 @@ import {
   RadioGroupLabel,
   RadioGroupOption,
 } from '@headlessui/vue'
+import { defineEmit } from '@vue/runtime-core'
 
 import useSearch from '../composables/useSearch'
+import type { Show } from '../types'
 
-declare function emit(name, value): void
+const { options, setSearchString, isLoading, searchString, error } = useSearch()
+
+const emit = defineEmit(['select-item'])
 
 function selectItem(item: Show) {
   emit('select-item', item)
   searchString.value = ''
 }
 
-const { options, setSearchString, isLoading, searchString } = useSearch()
 </script>
