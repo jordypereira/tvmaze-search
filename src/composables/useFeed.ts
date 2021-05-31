@@ -30,9 +30,11 @@ export default function useFeed(ids: number[]) {
   }
 
   async function removeShowFromFeed(id: number) {
-    const showIndex = feedArrayMap.value?.findIndex(value => value === id)
-    showIndex && feedArray.value?.splice(showIndex, 1)
-    showIndex && feedArrayMap.value?.splice(showIndex, 1)
+    const showIndex = feedArrayMap.value.findIndex(value => value === id)
+    if (showIndex !== -1) {
+      feedArray.value = feedArray.value.slice(showIndex, 1)
+      feedArrayMap.value = feedArrayMap.value.slice(showIndex, 1)
+    }
   }
 
   function getShowIdByEpisodeId(id: number) {
