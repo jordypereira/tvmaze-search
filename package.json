@@ -7,10 +7,12 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "@antfu/eslint-config": "^0.6.5",
     "@github/auto-complete-element": "^3.0.2",
     "@headlessui/vue": "^1.2.0",
     "@vueuse/core": "^4.11.1",
     "axios": "^0.21.1",
+    "eslint": "^7.27.0",
     "vue": "^3.0.5"
   },
   "devDependencies": {
