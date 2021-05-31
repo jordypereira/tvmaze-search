@@ -7,12 +7,12 @@ Demo project using TVMaze.
 Using Vue3 + TypeScript + Setup Sugar Syntax
 
 Autocomplete component
-1. Tried out Github-Elements autocomplete. Seems ahrd to use, it expects the server to return <li> elements.
+1. Tried out Github-Elements autocomplete. Seems difficult to use because for one it expects the server to return `<li>` elements.
 
-Then I implemented my own search with `<input type="search">` and composables.
+So I implemented my own search with `<input type="search">` and composables.
 
 1. Tried out HeadlessUI Lists. These Lists seemed to not work without the button to toggle them open.
-2. Tried out HeadlessUI RadioGroup. Even though they are not made for this, it worked.
+2. Tried out HeadlessUI RadioGroup. Even though they are not made for this, they seem to work well and have accessibility out of the box.
 
 ## Tech
   - Vite
