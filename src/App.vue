@@ -22,6 +22,17 @@
         Empty :c <br> Add some! :>
       </p>
     </div>
+
+    <!-- Feed -->
+    <!-- Move into own component when it getss too large or needs to be reused -->
+    <div class="prose">
+      <h2>Upcoming shows</h2>
+      <ol v-if="feed && feed.length">
+        <li v-for="{name, id} in feed" :key="id">
+          {{ getShowFromFavoritesById(id)?.name }} - {{ name }}
+        </li>
+      </ol>
+    </div>
   </main>
 </template>
 
@@ -30,6 +41,7 @@ import { ref } from '@vue/reactivity'
 import { useStorage } from '@vueuse/core'
 import Search from './components/Search.vue'
 import ShowItemDetails from './components/ShowItemDetails.vue'
+import useFeed from './composables/useFeed'
 import type { Show } from './types'
 
 const selectedItem = ref<Show>()
@@ -37,6 +49,7 @@ const selectedItem = ref<Show>()
 // Should save items in cache
 // Should only save ids in favorite and link id to cached item. Also fetch all favorites on load
 const favorites = useStorage<Show[]>('favorites', [])
+const { feed, addShowToFeed, removeShowFromFeed, getShowIdByEpisodeId } = useFeed(favorites.value.map(({ id }) => id))
 
 function selectItem(item: Show) {
   selectedItem.value = item
@@ -47,9 +60,17 @@ function isItemFavoriteById(itemId: number) {
 }
 
 function toggleFavorite(item: Show) {
-  if (!isItemFavoriteById(item.id))
+  if (!isItemFavoriteById(item.id)) {
     favorites.value.push(item)
-  else
+    addShowToFeed(item.id)
+  }
+  else {
     favorites.value = favorites.value.filter(({ id }) => id !== item.id)
+    removeShowFromFeed(item.id)
+  }
+}
+
+function getShowFromFavoritesById(id: number) {
+  return favorites.value.find(f => f.id === getShowIdByEpisodeId(id))
 }
 </script>

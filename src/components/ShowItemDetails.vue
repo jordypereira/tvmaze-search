@@ -16,10 +16,21 @@
         </button>
         <ul>
           <li>
-            <p>Genres: {{ item.genres.join(' ') }}</p>
+            <small>Genres: {{ item.genres.join(' ') }}</small>
           </li>
-          <li>
-            <div v-html="item.summary"></div>
+          <li class="grid grid-cols-2 gap-4">
+            <div><img :src="item.image.medium" :alt="item.name"></div>
+            <div>
+              <span v-html="item.summary"></span>
+              <a
+                width="192px"
+                height="270px"
+                :href="item.url"
+                class="block mt-2"
+                target="_blank"
+                rel="noopener"
+              >See on TVMaze</a>
+            </div>
           </li>
         </ul>
       </DisclosurePanel>

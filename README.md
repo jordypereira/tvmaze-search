@@ -21,3 +21,6 @@ Then I implemented my own search with `<input type="search">` and composables.
   - TypeScript
   - Setup Sugar Syntax
   - HeadlessUI
+
+## Todo
+- Add unit & E2E Testing

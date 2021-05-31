@@ -11,7 +11,7 @@
   >
   <small v-if="error" class="block text-red-400">{{ error.message }}</small>
   <template v-else-if="options && options.length > 0">
-    <RadioGroup class="max-w-250px">
+    <RadioGroup class="max-w-250px focus:(ring-2 ring-offset-2 ring-offset-yellow-300 ring-white ring-opacity-60)">
       <RadioGroupLabel class="sr-only">
         Server size
       </RadioGroupLabel>
@@ -35,7 +35,7 @@
                 ? 'bg-blue-600 bg-opacity-75 text-white '
                 : 'bg-white ',
             ]"
-            class="relative flex px-5 py-4 cursor-pointer focus:outline-none"
+            class="relative flex px-5 py-4 cursor-pointer focus:outline-none hover:(ring-2 ring-offset-2 ring-offset-yellow-300 ring-white ring-opacity-60)"
           >
             <div class="flex items-center justify-between w-full">
               <div class="flex items-center">

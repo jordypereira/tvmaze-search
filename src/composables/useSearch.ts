@@ -1,7 +1,7 @@
 import { ref } from '@vue/reactivity'
 import { debouncedWatch } from '@vueuse/core'
 import { AxiosError } from 'axios'
-import { search } from '../plugins/axios'
+import { search } from '../api/tv'
 import type { SearchShow } from '../types'
 
 export default function useSearch() {
@@ -16,6 +16,8 @@ export default function useSearch() {
   }
 
   async function searchShow(newSearchValue: string) {
+    if (!newSearchValue) return
+
     isLoading.value = true
     error.value = undefined
 
