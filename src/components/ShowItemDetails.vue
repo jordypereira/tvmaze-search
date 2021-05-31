@@ -19,7 +19,9 @@
             <small>Genres: {{ item.genres.join(' ') }}</small>
           </li>
           <li class="grid grid-cols-2 gap-4">
-            <div><img :src="item.image.medium" :alt="item.name"></div>
+            <div v-if="item.image">
+              <img :src="item.image.medium" :alt="item.name">
+            </div>
             <div>
               <span v-html="item.summary"></span>
               <a

@@ -16,20 +16,21 @@ export default function useSearch() {
   }
 
   async function searchShow(newSearchValue: string) {
-    if (!newSearchValue) return
+    if (!newSearchValue) { options.value = undefined }
+    else {
+      isLoading.value = true
+      error.value = undefined
 
-    isLoading.value = true
-    error.value = undefined
-
-    try {
-      const resp = await search(newSearchValue)
-      options.value = resp.data
-    }
-    catch (e) {
-      error.value = e
-    }
-    finally {
-      isLoading.value = false
+      try {
+        const resp = await search(newSearchValue)
+        options.value = resp.data
+      }
+      catch (e) {
+        error.value = e
+      }
+      finally {
+        isLoading.value = false
+      }
     }
   }
 
