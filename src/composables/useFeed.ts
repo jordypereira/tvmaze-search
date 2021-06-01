@@ -3,7 +3,7 @@ import { computed } from '@vue/runtime-core'
 import { getUpcomingEpisodes } from '../api/tv'
 import { ShowEpisodes } from '../types'
 
-export default function useFeed(ids: number[]) {
+export default function useFeed(ids: number[] | undefined = undefined) {
   const feedArray = ref<ShowEpisodes[][]>([])
   const feedArrayMap = ref<number[]>([])
 
@@ -42,7 +42,7 @@ export default function useFeed(ids: number[]) {
     return feedArrayMap.value[index]
   }
 
-  setFeedArray(ids)
+  ids && setFeedArray(ids)
 
   return {
     feed,

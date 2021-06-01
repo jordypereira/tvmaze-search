@@ -4,7 +4,7 @@
       <h1>MazeTV Api Example.</h1>
     </div>
 
-    <Search @selectItem="selectItem" />
+    <ShowSearch @selectItem="selectItem" />
 
     <article v-if="selectedItem" class="mt-4">
       <ShowItemDetails :item="selectedItem" :is-favorite="isItemFavoriteById(selectedItem.id)" @toggleFavorite="toggleFavorite"></ShowItemDetails>
@@ -44,7 +44,7 @@
 <script lang="ts" setup>
 import { ref } from '@vue/reactivity'
 import { useStorage } from '@vueuse/core'
-import Search from './components/Search.vue'
+import ShowSearch from './components/ShowSearch.vue'
 import ShowItemDetails from './components/ShowItemDetails.vue'
 import useFeed from './composables/useFeed'
 import type { Show } from './types'
