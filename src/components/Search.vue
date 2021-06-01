@@ -2,7 +2,6 @@
   <label for="search" class="mr-4">Search Shows</label>
   <input
     id="search"
-    class="mx-auto"
     :value="searchString"
     type="search"
     name="search"
